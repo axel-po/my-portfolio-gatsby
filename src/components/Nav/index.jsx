@@ -22,7 +22,7 @@ export default function Nav() {
       </button>
 
       <button>
-        <img className='w-[32px]' src='icons/icon-menu.svg' alt='icon-menu' />
+        <img className='w-[32px]' src='/icons/icon-menu.svg' alt='icon-menu' />
       </button>
     </nav>
   );
