@@ -8,13 +8,14 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+/* Wrapper */
 .container {
   width: 90%;
   margin: 0 auto;
   max-width: 1200px;
 }
 
-/* Gradients*/
+/* Gradients */
 .bg-gradient {
   background-image: -webkit-gradient(
     linear,
@@ -38,5 +39,19 @@ body {
 }
 
 .gradient-2 {
-  background-image: linear-gradient(45deg, #ce06d6, #f440a3 28%, #fdc7ca 61%, #6183f3);
+  background-image: linear-gradient(
+    45deg,
+    #ce06d6,
+    #f440a3 28%,
+    #fdc7ca 61%,
+    #6183f3
+  );
+}
+
+/* Section projects grid */
+@media screen and (min-width: 1024px) {
+  .projects article:nth-child(even) {
+    margin-top: -78px;
+    height: fit-content;
+  }
 }

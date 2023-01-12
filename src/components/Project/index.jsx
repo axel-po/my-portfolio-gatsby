@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap, ScrollTrigger } from "gsap/all";
 import { Link } from "gatsby";
 
 export default function Project() {
+  const projectRef = useRef(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(projectRef.current, {
+      y: 0,
+      duration: 2,
+      ease: "power4.out",
+      autoAlpha: 1,
+      scrollTrigger: {
+        trigger: projectRef.current,
+        // markers: true,
+        start: "top-=100% center",
+      },
+    });
+  }, []);
+
   return (
-    <article className='bg-white p-5 md:p-8'>
+    <article
+      ref={projectRef}
+      className='invisible translate-y-full bg-white  p-5 opacity-0 md:p-8'>
       <img
         className='h-[50vw] w-full object-cover md:h-[350px]'
         src='/mockup-netflix-clone.jpg'
