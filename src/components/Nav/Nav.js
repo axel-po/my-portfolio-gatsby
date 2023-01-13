@@ -19,21 +19,21 @@ export default function Nav() {
       </div>
 
       <div className='hidden gap-3 md:flex'>
-        <Link to='https://github.com/axel-po'>
+        <a href='https://github.com/axel-po'>
           <img
             className='w-[32px]'
             src='/icons/icon-github.svg'
             alt='icon-git-hub'
           />
-        </Link>
+        </a>
 
-        <Link to='https://www.linkedin.com/in/axel-pointud-7a891b1ba/'>
+        <a href='https://www.linkedin.com/in/axel-pointud-7a891b1ba/'>
           <img
             className='w-[32px]'
             src='/icons/icon-linkedin.svg'
             alt='icon-linkedin'
           />
-        </Link>
+        </a>
       </div>
 
       <button className='md:hidden'>

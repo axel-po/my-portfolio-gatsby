@@ -8,5 +8,5 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  plugins: ["gatsby-plugin-postcss"],
+  plugins: ["gatsby-plugin-postcss", "gatsby-plugin-react-helmet"],
 };
