@@ -50,26 +50,32 @@ export default function Services() {
           <p
             ref={txtRef}
             className='invisible mt-12 max-w-[352px] translate-y-full text-gray opacity-0'>
-            I discover this process working more than 10+ in the design industry
-            that why you can trust blindly
+            J'offre des services complets allant de la conception à la mise en
+            production pour des applications web modernes et performantes,
+            notamment des landing pages sur mesure pour des campagnes de
+            marketing efficaces.
           </p>
         </div>
 
         <div
           ref={divRef}
           className='gradient-2 invisible flex w-full flex-col gap-6 p-4  text-black opacity-0 md:p-6'>
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
+          <ServiceCard
+            title="Création d'application web"
+            text='Avec les derniers outils : React JS, Next JS, Typescript'
+          />
+          <ServiceCard
+            title='Intégration de maquettes graphiques'
+            text='Au pixels près avec HTML, SCSS, JS'
+          />
+          <ServiceCard title='Landing page perfomantes' text='Avec Gatsby JS' />
         </div>
       </div>
     </section>
   );
 }
 
-export function ServiceCard() {
+export function ServiceCard({ title, text }) {
   const serviceCardRef = useRef(null);
 
   useEffect(() => {
@@ -90,10 +96,8 @@ export function ServiceCard() {
       ref={serviceCardRef}
       className='invisible flex translate-y-full bg-white p-5 opacity-0'>
       <div className='flex flex-col'>
-        <h3 className='text-lg font-bold'>
-          Création d'application web React JS
-        </h3>
-        <p className='mt-4 text-sm'>React JS / Next JS</p>
+        <h3 className='text-lg font-bold'>{title}</h3>
+        <p className='mt-4 text-sm'>{text}</p>
       </div>
     </div>
   );
