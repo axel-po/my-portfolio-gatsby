@@ -34,12 +34,12 @@ export default function Project({ image, title, description }) {
       </div>
       <h3 className='text-3xl font-bold'>{title}</h3>
       <p className='mt-6 mb-12 text-sm md:text-base'>{description}</p>
-      <Link
+      {/* <Link
         to='/project'
         className='flex items-center gap-3 text-sm font-semibold uppercase md:text-lg'>
         <span>View Project</span>
         <img src='/icons/arrow-right-circle.svg' alt='arrow-right' />
-      </Link>
+      </Link> */}
     </article>
   );
 }
