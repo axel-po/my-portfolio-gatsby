@@ -7,8 +7,9 @@ import About from "../components/About/About";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import { Helmet } from "react-helmet";
+// import { graphql } from "gatsby";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <>
       <Helmet>
@@ -52,3 +53,14 @@ export default function Home() {
     </>
   );
 }
+
+// export const query = graphql`
+//   query MyQuery {
+//     site {
+//       siteMetadata {
+//         description
+//         title
+//       }
+//     }
+//   }
+// `;

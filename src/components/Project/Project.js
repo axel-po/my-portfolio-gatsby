@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { gsap, ScrollTrigger } from "gsap/all";
 import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
-export default function Project({ image, title, description }) {
+export default function Project({ projectData }) {
   const projectRef = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -23,23 +24,30 @@ export default function Project({ image, title, description }) {
   return (
     <article
       ref={projectRef}
-      className='invisible translate-y-full bg-white  p-5 opacity-0 md:p-8'>
-      <img
+      className='invisible translate-y-full bg-white  p-5 opacity-0 md:p-8 '>
+      {/* <img
         className='h-[50vw] w-full object-cover md:h-[350px]'
-        src={image}
-        alt={title}
+        src='../../images/mockup-deliveroo.jpg'
+        alt=''
+      /> */}
+      <StaticImage
+        src='../../images/mockup-deliveroo.jpg'
+        width={845}
+        alt='projects'
       />
       <div className='my-6 flex gap-3'>
         <CategoryProject>Web App</CategoryProject>
       </div>
-      <h3 className='text-3xl font-bold'>{title}</h3>
-      <p className='mt-6 mb-12 text-sm md:text-base'>{description}</p>
-      {/* <Link
-        to='/project'
+      <h3 className='text-3xl font-bold'>{projectData.frontmatter.title}</h3>
+      <p className='my-6 text-sm md:text-base'>
+        {projectData.frontmatter.slug}
+      </p>
+      <Link
+        to={`/project/${projectData.frontmatter.slug}`}
         className='flex items-center gap-3 text-sm font-semibold uppercase md:text-lg'>
         <span>View Project</span>
         <img src='/icons/arrow-right-circle.svg' alt='arrow-right' />
-      </Link> */}
+      </Link>
     </article>
   );
 }

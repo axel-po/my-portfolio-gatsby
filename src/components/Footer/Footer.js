@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 export default function Footer() {
   return (
-    <footer className='bg-black pt-28  text-white md:pt-40' id='footer'>
+    <footer className='bg-black pt-12  text-white md:pt-[60px]' id='footer'>
       <div className='container grid grid-cols-1 gap-12 md:grid-cols-3'>
         <div>
           <a
@@ -16,7 +16,7 @@ export default function Footer() {
 
         <div className='flex flex-col md:justify-self-center'>
           <h3 className='mb-6 text-sm font-bold uppercase tracking-wide '>
-            Pages
+            Pages 
           </h3>
           <Link to='/' className='mb-3'>
             Home

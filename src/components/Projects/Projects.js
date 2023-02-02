@@ -1,8 +1,28 @@
 import React, { useRef, useEffect } from "react";
 import { gsap, ScrollTrigger } from "gsap/all";
 import Project from "../Project/Project";
+import { graphql, useStaticQuery } from "gatsby";
 
 export default function Projects() {
+  /* Get Data with MD */
+  const data = useStaticQuery(graphql`
+    query ProjectsData {
+      allMarkdownRemark {
+        nodes {
+          frontmatter {
+            slug
+            stack
+            title
+          }
+          id
+        }
+      }
+    }
+  `);
+
+  const projectsData = data.allMarkdownRemark.nodes;
+
+  /* Animations */
   const titleRef = useRef(null);
   const txtRef = useRef(null);
 
@@ -46,21 +66,27 @@ export default function Projects() {
         </p>
 
         <div className='projects grid grid-cols-1 gap-12 lg:grid-cols-2'>
-          <Project
-            image='/twitter-mockup.jpg'
-            title='Clone de Twitter'
-            description="Ce projet a été réalisé lors du bootcamp React JS crée par Mike Codeur. En équipe de 4 personnes, nous avons décidé de reproduire l'application Twitter à l'aide de React pour le front et de Firebase pour le back."
+          {/* <Project
+            image='/mockup-deliveroo.jpg'
+            title='Clone de Deliveroo'
+            description="Le but de ce projet était de reproduire l'interface du site aux pixels près, ajouter un système de panier, ajouter un système d'authentification à l'aide de NodeJS."
           />
           <Project
             image='/mockup-netflix-clone.jpg'
             title='Clone de Netflix'
             description='Clone de Netflix avec React JS, utilisation d APIs, authentifiaction JWT, react-router, react-query , ...'
           />
+
           <Project
-            image='/mockup-deliveroo.jpg'
-            title='Clone de Deliveroo'
-            description="Le but de ce projet était de reproduire l'interface du site aux pixels près, ajouter un système de panier, ajouter un système d'authentification à l'aide de NodeJS."
-          />
+            image='/twitter-mockup.jpg'
+            title='Clone de Twitter'
+            description="Ce projet a été réalisé lors du bootcamp React JS crée par Mike Codeur. En équipe de 4 personnes, nous avons décidé de reproduire l'application Twitter à l'aide de React pour le front et de Firebase pour le back."
+          /> */}
+          <>
+            {projectsData.map((projectData) => (
+              <Project key={projectData.id} projectData={projectData} />
+            ))}
+          </>
         </div>
       </div>
     </section>
