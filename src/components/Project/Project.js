@@ -31,7 +31,7 @@ export default function Project({ projectData }) {
         alt=''
       /> */}
       <StaticImage
-        src='../../images/mockup-deliveroo.jpg'
+        src='/images/mockup-deliveroo.jpg'
         width={845}
         alt='projects'
       />
@@ -54,7 +54,7 @@ export default function Project({ projectData }) {
 
 export function CategoryProject({ children }) {
   return (
-    <div className='rounded-full bg-[#EFEFEF] px-3 py-1 text-xs font-bold'>
+    <div className='inline-block rounded-full bg-[#EFEFEF] px-3 py-1 text-xs font-bold'>
       {children}
     </div>
   );

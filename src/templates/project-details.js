@@ -1,15 +1,14 @@
 import React from "react";
-import Layout from '../components/Layout/Layout'
+import Layout from "../components/Layout/Layout";
+import { CategoryProject } from "../components/Project/Project";
 
-export default function ProjectDetails() {
+export default function projectDetails() {
   return (
     <Layout>
-      <div>
-        <h2>title</h2>
-        <h3>stack</h3>
-        <p>je suis un projet</p>
-
-      </div>
+      <header className='flex justify-center h-screen flex-col items-center bg-black'>
+        <CategoryProject>Web App</CategoryProject>
+        <h2 className='text-3xl text-black'>Clone de Deliveroo</h2>
+      </header>
     </Layout>
   );
 }

@@ -9,7 +9,7 @@ export default function Footer() {
           <a
             className='flex items-center gap-4 text-base font-bold text-white md:text-2xl'
             href='mailto:contact@axel-pointud.fr'>
-            <img src='icons/icon-email.svg' alt='' />
+            <img src='/icons/icon-email.svg' alt='' />
             <p>contact@axel-pointud.fr</p>
           </a>
         </div>
