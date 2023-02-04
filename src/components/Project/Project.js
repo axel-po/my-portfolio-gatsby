@@ -43,7 +43,7 @@ export default function Project({ projectData }) {
         {projectData.frontmatter.slug}
       </p>
       <Link
-        to={`/project/${projectData.frontmatter.slug}`}
+        to={`/projects/${projectData.frontmatter.slug}`}
         className='flex items-center gap-3 text-sm font-semibold uppercase md:text-lg'>
         <span>View Project</span>
         <img src='/icons/arrow-right-circle.svg' alt='arrow-right' />
