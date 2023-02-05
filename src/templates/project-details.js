@@ -22,6 +22,11 @@ export default function ProjectDetails({ data }) {
             src={thumb}
             alt=''
           /> */}
+          <img
+            className='mt-12 max-h-[670px] w-full object-cover object-center md:mt-[78px]'
+            src='/twitter-mockup.jpg'
+            alt=''
+          />
         </div>
       </header>
 
