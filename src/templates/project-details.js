@@ -1,14 +1,114 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import { CategoryProject } from "../components/Project/Project";
+import { graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
-export default function projectDetails() {
+export default function ProjectDetails({ data }) {
+  const { html } = data.markdownRemark;
+  const { title, stack, thumb } = data.markdownRemark.frontmatter;
+
   return (
     <Layout>
-      <header className='flex justify-center h-screen flex-col items-center bg-black'>
-        <CategoryProject>Web App</CategoryProject>
-        <h2 className='text-3xl text-black'>Clone de Deliveroo</h2>
+      <header className=' bg-black py-[90px] md:py-[120px]'>
+        <div className='container'>
+          <CategoryProject>Web App</CategoryProject>
+          <h2 className='my-5 text-5xl font-bold text-white md:text-6xl'>
+            {title}
+          </h2>
+
+          {/* <StaticImage
+            className='mt-12 max-h-[670px] w-full object-cover object-center md:mt-[78px]'
+            src={thumb}
+            alt=''
+          /> */}
+        </div>
       </header>
+
+      <main className='container mt-12'>
+        <div className='my-12 flex flex-col items-baseline justify-around gap-9 md:flex-row md:gap-12'>
+          <CardDetailsLayout title='technologie'>
+            <div className='flex flex-wrap justify-between gap-8'>
+              <div>
+                <p className='mb-2 font-bold'>Frontend</p>
+                <ul className='flex gap-2'>
+                  <IconSkill src='/icons-skills/css.svg' name='css' />
+                  <IconSkill src='/icons-skills/react.svg' name='css' />
+                  <IconSkill src='/icons-skills/html.svg' name='css' />
+                  <IconSkill src='/icons-skills/scss.svg' name='css' />
+                </ul>
+              </div>
+
+              <div>
+                <p className='mb-2 font-bold'>Backend </p>
+                <ul className='flex gap-2'>
+                  <IconSkill src='/icons-skills/css.svg' name='css' />
+                  <IconSkill src='/icons-skills/react.svg' name='css' />
+                  <IconSkill src='/icons-skills/html.svg' name='css' />
+                  <IconSkill src='/icons-skills/scss.svg' name='css' />
+                </ul>
+              </div>
+            </div>
+          </CardDetailsLayout>
+
+          <CardDetailsLayout title='Demo & Code'>
+            <a href='#' className='mb-4 block underline'>
+              axel-pointud.fr
+            </a>
+
+            <a href='#' className='underline'>
+              https://git-hub/fr
+            </a>
+          </CardDetailsLayout>
+        </div>
+
+        <section className='mt-24 md:mb-12'>
+          <h3 className='mb-12 text-3xl font-bold md:text-5xl'>
+            Description du projet
+          </h3>
+          {/* <p className='md:text-lg'>{description}</p> */}
+
+          <div
+            className='text-red-600'
+            dangerouslySetInnerHTML={{ __html: html }}></div>
+        </section>
+
+        <section className='my-12'>
+          <h2 className='text-center text-3xl font-bold  md:text-5xl'>
+            See more <span className='bg-gradient'>Projects</span>
+          </h2>
+        </section>
+      </main>
     </Layout>
   );
 }
+
+export const CardDetailsLayout = ({ title, children }) => {
+  return (
+    <div className='bg-[#F4F4F4] py-5 px-5 md:w-6/12'>
+      <p className='mb-6 text-lg font-bold uppercase'>{title}</p>
+      {children}
+    </div>
+  );
+};
+
+export const IconSkill = ({ src, name }) => {
+  return (
+    <li>
+      <img className='w-[30px]' src={src} alt={name} />
+    </li>
+  );
+};
+
+export const query = graphql`
+  query ProjectsPage($slug: String) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        thumb
+        stack
+      }
+    }
+  }
+`;
