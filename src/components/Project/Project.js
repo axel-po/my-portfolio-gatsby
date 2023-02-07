@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 export default function Project({ projectData }) {
   const { title, slug } = projectData.node.frontmatter;
-
+  console.log("slug", slug);
   const projectRef = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +27,7 @@ export default function Project({ projectData }) {
     <Link
       ref={projectRef}
       className='invisible translate-y-full bg-white  p-5 opacity-0 md:p-8 '
-      to={`/projects/${projectData.slug}`}>
+      to={`/project/${slug}`}>
       <article>
         <GatsbyImage
           image={

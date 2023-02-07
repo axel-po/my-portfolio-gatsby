@@ -1,12 +1,14 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { CategoryProject } from "../../components/Project/Project";
-import { Link, graphql, useStaticQuery } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 export default function ProjectDetails({ data }) {
-  console.log("data", data);
+  const { html } = data.markdownRemark;
   const { title } = data.markdownRemark.frontmatter;
+
+  console.log(html);
   return (
     <Layout>
       <header className=' bg-black py-[90px] md:py-[120px]'>
@@ -18,18 +20,8 @@ export default function ProjectDetails({ data }) {
           <h2 className='my-5 text-5xl font-bold text-white md:text-6xl'>
             {title}
           </h2>
-
-          {/* <StaticImage
-            className='mt-12 max-h-[670px] w-full object-cover object-center md:mt-[78px]'
-            src={thumb}
-            alt=''
-          /> */}
-          {/* <img
-            className='mt-12 max-h-[670px] w-full object-cover object-center md:mt-[78px]'
-            src='/twitter-mockup.jpg'
-            alt=''
-          /> */}
           <GatsbyImage
+            className='max-h-[670px] w-full object-cover object-center mt-3'
             image={
               data.markdownRemark.frontmatter.featuredImage.childImageSharp
                 .gatsbyImageData
@@ -38,7 +30,16 @@ export default function ProjectDetails({ data }) {
         </div>
       </header>
 
-      <main className='container mt-12'>
+      <main style={{ margin: "90px auto" }} className='container'>
+        <section className=''>
+          <h3 className='mb-6 text-2xl font-bold md:text-4xl'>
+            Description du projet
+          </h3>
+          <div
+            className='md:text-xl'
+            dangerouslySetInnerHTML={{ __html: html }}></div>
+        </section>
+
         <div className='my-12 flex flex-col items-baseline justify-around gap-9 md:flex-row md:gap-12'>
           <CardDetailsLayout title='technologie'>
             <div className='flex flex-wrap justify-between gap-8'>
@@ -75,22 +76,11 @@ export default function ProjectDetails({ data }) {
           </CardDetailsLayout>
         </div>
 
-        <section className='mt-24 md:mb-12'>
-          <h3 className='mb-12 text-3xl font-bold md:text-5xl'>
-            Description du projet
-          </h3>
-          {/* <p className='md:text-lg'>{description}</p> */}
-
-          {/* <div
-            className='text-red-600'
-            dangerouslySetInnerHTML={{ __html: html }}></div> */}
-        </section>
-
-        <section className='my-12'>
+        {/* <section className='my-12'>
           <h2 className='text-center text-3xl font-bold  md:text-5xl'>
             See more <span className='bg-gradient'>Projects</span>
           </h2>
-        </section>
+        </section> */}
       </main>
     </Layout>
   );
@@ -98,7 +88,7 @@ export default function ProjectDetails({ data }) {
 
 export const CardDetailsLayout = ({ title, children }) => {
   return (
-    <div className='bg-[#F4F4F4] py-5 px-5 md:w-6/12'>
+    <div className='w-full bg-[#F4F4F4] py-5 px-5 md:w-6/12'>
       <p className='mb-6 text-lg font-bold uppercase'>{title}</p>
       {children}
     </div>
@@ -116,6 +106,7 @@ export const IconSkill = ({ src, name }) => {
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
+      html
       frontmatter {
         title
         slug
