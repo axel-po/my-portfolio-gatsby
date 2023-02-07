@@ -6,7 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 export default function ProjectDetails({ data }) {
   const { html } = data.markdownRemark;
-  const { title } = data.markdownRemark.frontmatter;
+  const { title, code, demo } = data.markdownRemark.frontmatter;
 
   console.log(html);
   return (
@@ -21,7 +21,7 @@ export default function ProjectDetails({ data }) {
             {title}
           </h2>
           <GatsbyImage
-            className='max-h-[670px] w-full object-cover object-center mt-3'
+            className='mt-3 max-h-[670px] w-full object-cover object-center'
             image={
               data.markdownRemark.frontmatter.featuredImage.childImageSharp
                 .gatsbyImageData
@@ -66,12 +66,12 @@ export default function ProjectDetails({ data }) {
           </CardDetailsLayout>
 
           <CardDetailsLayout title='Demo & Code'>
-            <a href='#' className='mb-4 block underline'>
-              axel-pointud.fr
+            <a href={demo} className='mb-4 block underline'>
+              {demo}
             </a>
 
-            <a href='#' className='underline'>
-              https://git-hub/fr
+            <a href={code} className='underline'>
+              {code}
             </a>
           </CardDetailsLayout>
         </div>
@@ -110,6 +110,8 @@ export const pageQuery = graphql`
       frontmatter {
         title
         slug
+        code
+        demo
         featuredImage {
           childImageSharp {
             gatsbyImageData
