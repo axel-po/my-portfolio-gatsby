@@ -1,6 +1,6 @@
 ---
-slug: "/netflix"
+slug: "netflix"
 date: "2022-11-24"
-title: "netflix"
+title: "je suis netflix"
 featuredImage: ../images/mockup-netflix-clone.jpg
 ---

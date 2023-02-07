@@ -36,7 +36,7 @@ export default function Projects() {
   // Get data
   const data = useStaticQuery(
     graphql`
-      query MyQuery {
+      query ProjectsData {
         allMarkdownRemark {
           edges {
             node {
@@ -56,7 +56,6 @@ export default function Projects() {
     `
   );
 
-  // console.log("d", data);
   return (
     <section id='projects' className='bg-[#F2F2F2]  py-28 md:py-40'>
       <div className='container'>

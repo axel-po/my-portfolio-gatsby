@@ -1,13 +1,12 @@
 import React from "react";
-import Layout from "../components/Layout/Layout";
-import { CategoryProject } from "../components/Project/Project";
-import { Link, graphql } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
+import Layout from "../../components/Layout/Layout";
+import { CategoryProject } from "../../components/Project/Project";
+import { Link, graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export default function ProjectDetails({ data }) {
-  const { html } = data.markdownRemark;
-  const { title, stack, thumb } = data.markdownRemark.frontmatter;
-
+  console.log("data", data);
+  const { title } = data.markdownRemark.frontmatter;
   return (
     <Layout>
       <header className=' bg-black py-[90px] md:py-[120px]'>
@@ -25,10 +24,16 @@ export default function ProjectDetails({ data }) {
             src={thumb}
             alt=''
           /> */}
-          <img
+          {/* <img
             className='mt-12 max-h-[670px] w-full object-cover object-center md:mt-[78px]'
             src='/twitter-mockup.jpg'
             alt=''
+          /> */}
+          <GatsbyImage
+            image={
+              data.markdownRemark.frontmatter.featuredImage.childImageSharp
+                .gatsbyImageData
+            }
           />
         </div>
       </header>
@@ -76,9 +81,9 @@ export default function ProjectDetails({ data }) {
           </h3>
           {/* <p className='md:text-lg'>{description}</p> */}
 
-          <div
+          {/* <div
             className='text-red-600'
-            dangerouslySetInnerHTML={{ __html: html }}></div>
+            dangerouslySetInnerHTML={{ __html: html }}></div> */}
         </section>
 
         <section className='my-12'>
@@ -107,3 +112,19 @@ export const IconSkill = ({ src, name }) => {
     </li>
   );
 };
+
+export const pageQuery = graphql`
+  query ($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      frontmatter {
+        title
+        slug
+        featuredImage {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+`;
