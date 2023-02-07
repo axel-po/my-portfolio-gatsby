@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import { CategoryProject } from "../components/Project/Project";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
 export default function ProjectDetails({ data }) {
@@ -12,6 +12,9 @@ export default function ProjectDetails({ data }) {
     <Layout>
       <header className=' bg-black py-[90px] md:py-[120px]'>
         <div className='container'>
+          <Link to='/#projects' className='mb-6 block text-lg text-white'>
+            Retour
+          </Link>
           <CategoryProject>Web App</CategoryProject>
           <h2 className='my-5 text-5xl font-bold text-white md:text-6xl'>
             {title}
@@ -104,16 +107,3 @@ export const IconSkill = ({ src, name }) => {
     </li>
   );
 };
-
-export const query = graphql`
-  query ProjectsPage($slug: String) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        thumb
-        stack
-      }
-    }
-  }
-`;
