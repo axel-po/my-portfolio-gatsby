@@ -22,7 +22,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className='mt-[0px] flex h-screen flex-col items-center justify-center bg-black text-white '>
+    <header className='flex h-screen flex-col items-center justify-center bg-black text-white '>
       <div className='mx-auto w-[90%]'>
         <h1
           ref={titleRef}

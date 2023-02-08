@@ -54,7 +54,7 @@ body {
 
 /* Section projects grid */
 @media screen and (min-width: 1024px) {
-  .projects article:nth-child(even) {
+  .projects a:nth-child(even) {
     margin-top: -78px;
     height: fit-content;
   }

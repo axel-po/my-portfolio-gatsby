@@ -1,8 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { gsap, ScrollTrigger } from "gsap/all";
 import { Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 
-export default function Project({ image, title, description }) {
+export default function Project({ projectData }) {
+  const { title, slug, stack } = projectData.node.frontmatter;
+
   const projectRef = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -21,32 +24,36 @@ export default function Project({ image, title, description }) {
   }, []);
 
   return (
-    <article
+    <Link
       ref={projectRef}
-      className='invisible translate-y-full bg-white  p-5 opacity-0 md:p-8'>
-      <img
-        className='h-[50vw] w-full object-cover md:h-[350px]'
-        src={image}
-        alt={title}
-      />
-      <div className='my-6 flex gap-3'>
-        <CategoryProject>Web App</CategoryProject>
-      </div>
-      <h3 className='text-3xl font-bold'>{title}</h3>
-      <p className='mt-6 mb-12 text-sm md:text-base'>{description}</p>
-      {/* <Link
-        to='/project'
-        className='flex items-center gap-3 text-sm font-semibold uppercase md:text-lg'>
-        <span>View Project</span>
-        <img src='/icons/arrow-right-circle.svg' alt='arrow-right' />
-      </Link> */}
-    </article>
+      className='invisible translate-y-full bg-white  p-5 opacity-0 md:p-8 '
+      to={`/project/${slug}`}>
+      <article>
+        <GatsbyImage
+          image={
+            projectData.node.frontmatter.featuredImage.childImageSharp
+              .gatsbyImageData
+          }
+        />
+        <div className='my-6 flex gap-3'>
+          <CategoryProject>Web App</CategoryProject>
+        </div>
+        <h3 className='text-3xl font-bold'>{title}</h3>
+        <p className='my-6 text-sm md:text-base'>{stack}</p>
+        <Link
+          to={`project/${slug}`}
+          className='flex items-center gap-3 text-sm font-semibold uppercase md:text-lg'>
+          <span>View Project</span>
+          <img src='/icons/arrow-right-circle.svg' alt='arrow-right' />
+        </Link>
+      </article>
+    </Link>
   );
 }
 
 export function CategoryProject({ children }) {
   return (
-    <div className='rounded-full bg-[#EFEFEF] px-3 py-1 text-xs font-bold'>
+    <div className='inline-block rounded-full bg-[#EFEFEF] px-3 py-1 text-xs font-bold'>
       {children}
     </div>
   );

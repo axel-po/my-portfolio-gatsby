@@ -3,20 +3,20 @@ import { Link } from "gatsby";
 
 export default function Footer() {
   return (
-    <footer className='bg-black pt-28  text-white md:pt-40' id='footer'>
+    <footer className='bg-black pt-12  text-white md:pt-[60px]' id='footer'>
       <div className='container grid grid-cols-1 gap-12 md:grid-cols-3'>
         <div>
           <a
             className='flex items-center gap-4 text-base font-bold text-white md:text-2xl'
             href='mailto:contact@axel-pointud.fr'>
-            <img src='icons/icon-email.svg' alt='' />
+            <img src='/icons/icon-email.svg' alt='' />
             <p>contact@axel-pointud.fr</p>
           </a>
         </div>
 
         <div className='flex flex-col md:justify-self-center'>
           <h3 className='mb-6 text-sm font-bold uppercase tracking-wide '>
-            Pages
+            Pages 
           </h3>
           <Link to='/' className='mb-3'>
             Home
