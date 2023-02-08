@@ -7,6 +7,10 @@ import Contact from "../components/Contact/Contact";
 import Layout from "../components/Layout/Layout";
 
 export default function Home() {
+  const test = [
+    { id: "d", txt: "d" },
+    { id: "d", txt: "d" },
+  ];
   return (
     <>
       <Layout>

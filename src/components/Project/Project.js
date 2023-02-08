@@ -4,8 +4,8 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 export default function Project({ projectData }) {
-  const { title, slug } = projectData.node.frontmatter;
-  console.log("slug", slug);
+  const { title, slug, stack } = projectData.node.frontmatter;
+
   const projectRef = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -39,7 +39,7 @@ export default function Project({ projectData }) {
           <CategoryProject>Web App</CategoryProject>
         </div>
         <h3 className='text-3xl font-bold'>{title}</h3>
-        <p className='my-6 text-sm md:text-base'>{slug}</p>
+        <p className='my-6 text-sm md:text-base'>{stack}</p>
         <Link
           to={`project/${slug}`}
           className='flex items-center gap-3 text-sm font-semibold uppercase md:text-lg'>

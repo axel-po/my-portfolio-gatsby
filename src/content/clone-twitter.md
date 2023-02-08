@@ -2,7 +2,8 @@
 slug: "clone-twitter"
 date: "2023-11-24"
 title: "Clone de Twitter"
-featuredImage: ../images/mockup-deliveroo.jpg
+featuredImage: ../images/twitter-mockup.jpg
+stack: "React JS, Firebase, MUI"
 demo: "https://react-clone-twitter.netlify.app/home"
 code: "https://github.com/ChristopherVorburger/clone-twitter"
 ---
